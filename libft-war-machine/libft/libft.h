@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.c                                            :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: okimdil <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: azouaiga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/14 17:33:56 by okimdil           #+#    #+#             */
-/*   Updated: 2021/11/06 13:10:50 by azouaiga         ###   ########.fr       */
+/*   Created: 2021/11/06 15:44:17 by azouaiga          #+#    #+#             */
+/*   Updated: 2021/11/06 20:24:58 by azouaiga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+/*#################FIRST PART###########################*/
 int			ft_atoi(const char *loc);
 void		ft_bzero(void *s, size_t n);
 void		*ft_calloc(size_t count, size_t size);
@@ -45,4 +46,12 @@ void		*ft_memmove(void *dst, const void *src, size_t len);
 char		**ft_split(char const *str, char c);
 char		*ft_itoa(int n);
 char		*ft_strmapi(const char *s, char (*f)(unsigned int, char));
+
+/*#################SECOND PART###########################*/
+char		*ft_substr(char const *s, unsigned int start, size_t len);
+char		*ft_strjoin(char const *s1, char const *s2);
+void		ft_putchar_fd(char c, int fd);
+void		ft_putstr_fd(char *s, int fd);
+void		ft_putendl_fd(char *s, int fd);
+void		ft_putnbr_fd(int n, int fd);
 #endif
