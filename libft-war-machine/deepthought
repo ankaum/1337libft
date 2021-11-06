@@ -1,9 +1,9 @@
 = Host-specific information ====================================================
 $> hostname; uname -msr
-e2r10p2.1337.ma
+e1r3p6.1337.ma
 Darwin 18.7.0 x86_64
 $> date
-Fri Nov  5 21:04:47 +01 2021
+Sat Nov  6 14:33:55 +01 2021
 $> gcc --version
 Apple LLVM version 10.0.1 (clang-1001.0.46.4)
 Target: x86_64-apple-darwin18.7.0
@@ -17,9 +17,6 @@ InstalledDir: /Library/Developer/CommandLineTools/usr/bin
 
 = libft.h=======================================================================
 $> norminette libft.h | grep -E '(Error|Warning)'
-/Users/azouaiga/Desktop/1337priv/libft-war-machine/dirlibft/libft.h: Error!
-Error: SPC_AFTER_OPERATOR   (line:  29, col:  68):	missing space after operator
-Norme check failed
 
 = Compiling libft ==============================================================
 $> make re
@@ -33,7 +30,7 @@ $> make bonus
 make: *** No rule to make target `bonus'.  Stop.
 
 $> ls -la libft.a
--rw-r--r--  1 azouaiga  candidate  19744 Nov  5 21:04 /Users/azouaiga/Desktop/1337priv/libft-war-machine/dirlibft/libft.a
+-rw-r--r--  1 azouaiga  candidate  19744 Nov  6 14:33 /Users/azouaiga/Desktop/1337priv/libft-war-machine/dirlibft/libft.a
 
 = Part1_functions ==============================================================
 
@@ -303,7 +300,9 @@ $> diff -U 3 user_output_test06 test06.output
 Diff OK :D
 = Test 7 ===================================================
 $> ./user_exe 07
-Command './user_exe 07' got killed by an Abort
+$> diff -U 3 user_output_test07 test07.output
+
+Diff OK :D
 = Test 8 ===================================================
 $> ./user_exe 08
 $> diff -U 3 user_output_test08 test08.output
