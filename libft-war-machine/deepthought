@@ -1,9 +1,9 @@
 = Host-specific information ====================================================
 $> hostname; uname -msr
-e1r7p11.1337.ma
+e1r8p15.1337.ma
 Darwin 18.7.0 x86_64
 $> date
-Sun Nov  7 18:02:47 +01 2021
+Wed Nov 10 11:17:36 +01 2021
 $> gcc --version
 Apple LLVM version 10.0.1 (clang-1001.0.46.4)
 Target: x86_64-apple-darwin18.7.0
@@ -20,17 +20,28 @@ $> norminette libft.h | grep -E '(Error|Warning)'
 
 = Compiling libft ==============================================================
 $> make re
-rm -rf *.o
-rm -rf libft.a
-gcc -Wall -Wextra -Werror -c ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c  ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c  ft_strchr.c ft_strdup.c ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_tolower.c ft_toupper.c ft_substr.c ft_strjoin.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c 
-ar rc libft.a *.o
-Building L9lawi..
+.o files deleted successfully
+libft.a deleted successfully
+Building Libft
+sources compiled successfully
+library built successfully
 
 $> make bonus
-make: *** No rule to make target `bonus'.  Stop.
+Building Libft (Bonus part)
+clang: error: no such file or directory: 'ft_lstnew.c'
+clang: error: no such file or directory: 'ft_lstadd_front.c'
+clang: error: no such file or directory: 'ft_lstsize.c'
+clang: error: no such file or directory: 'ft_lstlast.c'
+clang: error: no such file or directory: 'ft_lstadd_back.c'
+clang: error: no such file or directory: 'ft_lstdelone.c'
+clang: error: no such file or directory: 'ft_lstclear.c'
+clang: error: no such file or directory: 'ft_lstiter.c'
+clang: error: no such file or directory: 'ft_lstmap.c'
+clang: error: no input files
+make: *** [bonus] Error 1
 
 $> ls -la libft.a
--rw-r--r--  1 azouaiga  candidate  25280 Nov  7 18:02 /Users/azouaiga/Desktop/1337priv/libft-war-machine/dirlibft/libft.a
+-rw-r--r--  1 azouaiga  candidate  25280 Nov 10 11:17 /Users/azouaiga/Desktop/1337priv/libft-war-machine/dirlibft/libft.a
 
 = Part1_functions ==============================================================
 
@@ -996,26 +1007,23 @@ clang: error: no such file or directory: '/Users/azouaiga/Desktop/1337priv/libft
 = ft_split.c ===================================================================
 $> norminette ft_split.c | grep -E '(Error|Warning)'
 ../libft//ft_split.c: Error!
-Error: SPACE_BEFORE_FUNC    (line:  16, col:   5):	space before function name
-Error: NL_AFTER_VAR_DECL    (line:  23, col:   1):	Variable declarations must be followed by a newline
-Error: EMPTY_LINE_EOF       (line:  24, col:   1):	Empty line at end of file
-Error: EMPTY_LINE_FUNCTION  (line:  24, col:   1):	Empty line in function
+Error: TOO_MANY_LINES       (line:  68, col:   1):	Function has more than 25 lines
 Norme check failed
 $> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_split.c main.c libft.a -o user_exe
 
-/Users/azouaiga/Desktop/1337priv/libft-war-machine/dirlibft/../libft//ft_split.c:15:31: error: expected ';' after top level declarator
-static unsigned int splitcount
-                              ^
-                              ;
-/Users/azouaiga/Desktop/1337priv/libft-war-machine/dirlibft/../libft//ft_split.c:24:1: error: expected '}'
-^
-/Users/azouaiga/Desktop/1337priv/libft-war-machine/dirlibft/../libft//ft_split.c:17:1: note: to match this '{'
-{
-^
-/Users/azouaiga/Desktop/1337priv/libft-war-machine/dirlibft/../libft//ft_split.c:16:37: error: unused parameter 'c' [-Werror,-Wunused-parameter]
-char **ft_split(char const *s, char c)
-                                    ^
-3 errors generated.
+/Users/azouaiga/Desktop/1337priv/libft-war-machine/dirlibft/../libft//ft_split.c:44:6: error: incompatible integer to pointer conversion assigning to 'char **' from 'char' [-Werror,-Wint-conversion]
+        tab = (char)malloc(8 * count);
+            ^ ~~~~~~~~~~~~~~~~~~~~~~~
+/Users/azouaiga/Desktop/1337priv/libft-war-machine/dirlibft/../libft//ft_split.c:52:11: error: incompatible integer to pointer conversion assigning to 'char *' from 'char' [-Werror,-Wint-conversion]
+                        tab[k] = (char)malloc(1 * 100);
+                               ^ ~~~~~~~~~~~~~~~~~~~~~
+/Users/azouaiga/Desktop/1337priv/libft-war-machine/dirlibft/../libft//ft_split.c:54:13: error: use of undeclared identifier 'str'
+                        while (!(str[i] == c))
+                                 ^
+/Users/azouaiga/Desktop/1337priv/libft-war-machine/dirlibft/../libft//ft_split.c:56:17: error: use of undeclared identifier 'str'
+                                tab[k][j] = str[i];
+                                            ^
+4 errors generated.
 
 = ft_itoa.c ====================================================================
 $> norminette ft_itoa.c | grep -E '(Error|Warning)'
