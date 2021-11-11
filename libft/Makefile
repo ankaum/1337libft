@@ -6,7 +6,7 @@
 #    By: azouaiga <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/10 09:20:38 by azouaiga          #+#    #+#              #
-#    Updated: 2021/11/10 17:35:32 by azouaiga         ###   ########.fr        #
+#    Updated: 2021/11/11 00:39:13 by azouaiga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,6 @@ $(NAME): $(OBJS)
 	@echo "Building Libft"
 	ar -rc $@ $^
 
-#	@echo "Sources Compiled Successfully"
 %.o: %.c
 	$(CC) $(CFLAGS) $< -o $@
 
