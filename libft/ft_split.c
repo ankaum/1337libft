@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azouaiga <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: azouaiga <azouaiga@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 20:38:34 by azouaiga          #+#    #+#             */
-/*   Updated: 2021/11/11 22:37:33 by azouaiga         ###   ########.fr       */
+/*   Updated: 2021/11/16 00:24:08 by azouaiga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ static int	word_length_count(int *i, char c, char const *s)
 	}
 }
 
-
-
 char	**ft_split(char const *s, char c)
 {
 	int		i;
@@ -57,7 +55,7 @@ char	**ft_split(char const *s, char c)
 	int		k;
 	char	**tab;
 
-	word_count(i, s, c);
+	word_count(s, c);
 	tab = (char **)malloc(8 * (word_count(s, c) + 1));
 	i = 0;
 	j = 0;
