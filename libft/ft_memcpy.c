@@ -6,13 +6,13 @@
 /*   By: azouaiga <azouaiga@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 18:55:06 by azouaiga          #+#    #+#             */
-/*   Updated: 2021/11/16 00:22:40 by azouaiga         ###   ########.fr       */
+/*   Updated: 2021/11/28 15:22:07 by azouaiga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"libft.h" /*temporarily*/
 
-void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	size_t			count;
 	unsigned char	*s;
