@@ -6,7 +6,7 @@
 /*   By: azouaiga <azouaiga@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 11:43:57 by azouaiga          #+#    #+#             */
-/*   Updated: 2021/11/28 15:53:21 by azouaiga         ###   ########.fr       */
+/*   Updated: 2021/12/15 04:50:25 by azouaiga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*ft_strrchr(const char *s, int c)
 {
 	int					i;
-	
+
 	i = ft_strlen((char *)s);
 	while (i >= 0)
 	{
