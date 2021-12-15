@@ -6,78 +6,97 @@
 /*   By: azouaiga <azouaiga@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 20:38:34 by azouaiga          #+#    #+#             */
-/*   Updated: 2021/11/28 13:13:40 by azouaiga         ###   ########.fr       */
+/*   Updated: 2021/12/15 05:43:27 by azouaiga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
-static int	word_count(char const *s, char c)
+int	ft_is_separator(char c, char cr)
 {
-	int	i;
-	int	count;
-
-	i = 0;
-	count = 1;
-	while (s[i])
-	{
-		if (s[i] == c)
-		{
-			i++;
-			count++;
-		}
-		else
-			i++;
-	}
-	return (count);
+	if (c == cr)
+		return (1);
+	if (c == '\0')
+		return (1);
+	return (0);
 }
 
-static int	word_length_count(int *i, char c, char const *s)
+int	ft_words(char *str, char c)
 {
-	int	count;
+	int	i;
+	int	w;
 
-	while (s[*i])
+	i = 0;
+	w = 0;
+	while (str[i] != '\0')
 	{
-		if (s[*i] == c)
-		{
-			(*i)++;
-			count++;
-		}
-		else
-			return (count);
+		if (ft_is_separator(str[i], c) == 0
+			&& ft_is_separator(str[i + 1], c) == 1)
+			w++;
+		i++;
 	}
+	return (w);
+}
+
+void	ft_write_word(char *dest, char *src, char c)
+{
+	int	i;
+
+	i = 0;
+	while (ft_is_separator(src[i], c) == 0)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+}
+
+int	ft_write_split(char **split, char *str, char c)
+{
+	int	i;
+	int	j;
+	int	w;
+
+	i = 0;
+	w = 0;
+	while (str[i] != '\0')
+	{
+		if (ft_is_separator(str[i], c) == 1)
+			i++;
+		else
+		{
+			j = 0;
+			while (ft_is_separator(str[i + j], c) == 0)
+				j++;
+			split[w] = (char *)malloc(sizeof(char) * (j + 1));
+			if (!(split + w))
+				return (0);
+			ft_write_word(split[w], str + i, c);
+			i += j;
+			w++;
+		}
+	}
+	return (1);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	int		i;
-	int		j;
-	int		k;
-	char	**tab;
+	int		w;
+	char	**rtn;
 
-	word_count(s, c);
-	tab = (char **)malloc(8 * (word_count(s, c) + 1));
-	i = 0;
-	j = 0;
-	k = 0;
-	while (s[i])
+	if (!s)
+		return (NULL);
+	w = ft_words((char *)s, c);
+	rtn = (char **)malloc(sizeof(char *) * (w + 1));
+	if (!rtn)
+		return (NULL);
+	if (!(ft_write_split(rtn, (char *) s, c)))
 	{
-		if (! (s[i] == c))
-		{
-			tab[k] = (char *)malloc(1 * (word_length_count(&i, c, s) + 1));
-			j = 0;
-			while (!(s[i] == c))
-			{
-				tab[k][j] = s[i];
-				i++;
-				j++;
-			}
-			tab[k][j] = '\0';
-			k++;
-		}
-		else
-			i++;
+		w = -1;
+		while (rtn + ++w)
+			free(rtn + w);
+		free(rtn);
 	}
-	tab[i] = 0;
-	return (tab);
+	rtn[w] = 0;
+	return (rtn);
 }
