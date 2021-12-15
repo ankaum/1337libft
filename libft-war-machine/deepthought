@@ -3,7 +3,7 @@ $> hostname; uname -msr
 e1r13p2.1337.ma
 Darwin 18.7.0 x86_64
 $> date
-Wed Dec 15 06:22:28 +01 2021
+Wed Dec 15 07:07:15 +01 2021
 $> gcc --version
 Apple LLVM version 10.0.1 (clang-1001.0.46.4)
 Target: x86_64-apple-darwin18.7.0
@@ -95,27 +95,19 @@ gcc  -Wall -Wextra -Werror -c ft_tolower.c -o ft_tolower.o
 gcc  -Wall -Wextra -Werror -c ft_toupper.c -o ft_toupper.o
 gcc  -Wall -Wextra -Werror -c ft_substr.c -o ft_substr.o
 gcc  -Wall -Wextra -Werror -c ft_lstmap.c -o ft_lstmap.o
-ft_lstmap.c:25:10: error: implicit declaration of function 'ft_lstnew' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                node = ft_lstnew(f(lst->content));
-                       ^
-ft_lstmap.c:25:10: note: did you mean 'ft_lstmap'?
-ft_lstmap.c:15:9: note: 'ft_lstmap' declared here
-t_list  *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
-         ^
-ft_lstmap.c:25:8: error: incompatible integer to pointer conversion assigning to 't_list *' (aka 'struct s_list *') from 'int' [-Werror,-Wint-conversion]
-                node = ft_lstnew(f(lst->content));
-                     ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~
-ft_lstmap.c:28:4: error: implicit declaration of function 'ft_lstclear' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                        ft_lstclear(&root, del);
-                        ^
-ft_lstmap.c:31:3: error: implicit declaration of function 'ft_lstadd_back' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                ft_lstadd_back(&root, node);
-                ^
-4 errors generated.
-make: *** [ft_lstmap.o] Error 1
+gcc  -Wall -Wextra -Werror -c ft_lstnew.c -o ft_lstnew.o
+gcc  -Wall -Wextra -Werror -c ft_lstiter.c -o ft_lstiter.o
+gcc  -Wall -Wextra -Werror -c ft_lstsize.c -o ft_lstsize.o
+gcc  -Wall -Wextra -Werror -c ft_lstlast.c -o ft_lstlast.o
+gcc  -Wall -Wextra -Werror -c ft_lstadd_front.c -o ft_lstadd_front.o
+gcc  -Wall -Wextra -Werror -c ft_lstadd_back.c -o ft_lstadd_back.o
+gcc  -Wall -Wextra -Werror -c ft_lstclear.c -o ft_lstclear.o
+gcc  -Wall -Wextra -Werror -c ft_lstdelone.c -o ft_lstdelone.o
+Building Libft (Bonus part)
+ar -rc libft.a ft_itoa.o ft_split.o ft_strmapi.o ft_putchar_fd.o ft_putstr_fd.o ft_striteri.o ft_putendl_fd.o ft_putnbr_fd.o ft_strtrim.o ft_strjoin.o ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strchr.o ft_strdup.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strncmp.o ft_strnstr.o ft_strrchr.o ft_tolower.o ft_toupper.o ft_substr.o ft_lstmap.o ft_lstnew.o ft_lstiter.o ft_lstsize.o ft_lstlast.o ft_lstadd_front.o ft_lstadd_back.o ft_lstclear.o ft_lstdelone.o
 
 $> ls -la libft.a
--rw-r--r--  1 azouaiga  candidate  32904 Dec 15 06:22 /Users/azouaiga/Desktop/1337libft-2/libft-war-machine/dirlibft/libft.a
+-rw-r--r--  1 azouaiga  candidate  40320 Dec 15 07:07 /Users/azouaiga/Desktop/1337libft-2/libft-war-machine/dirlibft/libft.a
 
 = Part1_functions ==============================================================
 
@@ -1080,41 +1072,31 @@ Diff OK :D
 $> norminette ft_strtrim.c | grep -E '(Error|Warning)'
 $> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_strtrim.c main.c libft.a -o user_exe
 
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/tests/Part2_functions/ft_strtrim/main.c:38:19: error: implicit declaration of function 'ft_strtrim' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                if (!(strtrim = ft_strtrim(s1, " ")))
-                                ^
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/tests/Part2_functions/ft_strtrim/main.c:38:19: note: did you mean 'ft_strjoin'?
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/tests/Part2_functions/ft_strtrim/../../../libft.h:58:8: note: 'ft_strjoin' declared here
-char            *ft_strjoin(char const *s1, char const *s2);
-                 ^
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/tests/Part2_functions/ft_strtrim/main.c:38:17: error: incompatible integer to pointer conversion assigning to 'char *' from 'int' [-Werror,-Wint-conversion]
-                if (!(strtrim = ft_strtrim(s1, " ")))
-                              ^ ~~~~~~~~~~~~~~~~~~~
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/tests/Part2_functions/ft_strtrim/main.c:48:19: error: implicit declaration of function 'ft_strtrim' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                if (!(strtrim = ft_strtrim(s1, "te")))
-                                ^
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/tests/Part2_functions/ft_strtrim/main.c:48:17: error: incompatible integer to pointer conversion assigning to 'char *' from 'int' [-Werror,-Wint-conversion]
-                if (!(strtrim = ft_strtrim(s1, "te")))
-                              ^ ~~~~~~~~~~~~~~~~~~~~
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/tests/Part2_functions/ft_strtrim/main.c:58:19: error: implicit declaration of function 'ft_strtrim' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                if (!(strtrim = ft_strtrim(s1, "l ")))
-                                ^
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/tests/Part2_functions/ft_strtrim/main.c:58:17: error: incompatible integer to pointer conversion assigning to 'char *' from 'int' [-Werror,-Wint-conversion]
-                if (!(strtrim = ft_strtrim(s1, "l ")))
-                              ^ ~~~~~~~~~~~~~~~~~~~~
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/tests/Part2_functions/ft_strtrim/main.c:68:19: error: implicit declaration of function 'ft_strtrim' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                if (!(strtrim = ft_strtrim(s1, "tel")))
-                                ^
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/tests/Part2_functions/ft_strtrim/main.c:68:17: error: incompatible integer to pointer conversion assigning to 'char *' from 'int' [-Werror,-Wint-conversion]
-                if (!(strtrim = ft_strtrim(s1, "tel")))
-                              ^ ~~~~~~~~~~~~~~~~~~~~~
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/tests/Part2_functions/ft_strtrim/main.c:78:19: error: implicit declaration of function 'ft_strtrim' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                if (!(strtrim = ft_strtrim(s1, " ")))
-                                ^
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/tests/Part2_functions/ft_strtrim/main.c:78:17: error: incompatible integer to pointer conversion assigning to 'char *' from 'int' [-Werror,-Wint-conversion]
-                if (!(strtrim = ft_strtrim(s1, " ")))
-                              ^ ~~~~~~~~~~~~~~~~~~~
-10 errors generated.
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./user_exe 02
+$> diff -U 3 user_output_test02 test02.output
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./user_exe 03
+$> diff -U 3 user_output_test03 test03.output
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./user_exe 04
+$> diff -U 3 user_output_test04 test04.output
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./user_exe 05
+$> diff -U 3 user_output_test05 test05.output
+
+Diff OK :D
 
 = ft_split.c ===================================================================
 $> norminette ft_split.c | grep -E '(Error|Warning)'
@@ -1352,130 +1334,101 @@ Diff OK :D
 $> norminette ft_lstnew_bonus.c | grep -E '(Error|Warning)'
 $> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_lstnew.c main.c libft.a -o user_exe
 
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/tests/Bonus_functions/ft_lstnew/main.c:49:16: error: implicit declaration of function 'ft_lstnew' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                if (!(elem = ft_lstnew(str)))
-                             ^
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/tests/Bonus_functions/ft_lstnew/main.c:49:14: error: incompatible integer to pointer conversion assigning to 't_list *' (aka 'struct s_list *') from 'int' [-Werror,-Wint-conversion]
-                if (!(elem = ft_lstnew(str)))
-                           ^ ~~~~~~~~~~~~~~
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/tests/Bonus_functions/ft_lstnew/main.c:71:16: error: implicit declaration of function 'ft_lstnew' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                if (!(elem = ft_lstnew(&i)))
-                             ^
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/tests/Bonus_functions/ft_lstnew/main.c:71:14: error: incompatible integer to pointer conversion assigning to 't_list *' (aka 'struct s_list *') from 'int' [-Werror,-Wint-conversion]
-                if (!(elem = ft_lstnew(&i)))
-                           ^ ~~~~~~~~~~~~~
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/tests/Bonus_functions/ft_lstnew/main.c:90:16: error: implicit declaration of function 'ft_lstnew' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                if (!(elem = ft_lstnew(NULL)))
-                             ^
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/tests/Bonus_functions/ft_lstnew/main.c:90:14: error: incompatible integer to pointer conversion assigning to 't_list *' (aka 'struct s_list *') from 'int' [-Werror,-Wint-conversion]
-                if (!(elem = ft_lstnew(NULL)))
-                           ^ ~~~~~~~~~~~~~~~
-6 errors generated.
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./user_exe 02
+$> diff -U 3 user_output_test02 test02.output
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./user_exe 03
+$> diff -U 3 user_output_test03 test03.output
+
+Diff OK :D
 
 = ft_lstdelone_bonus.c =========================================================
 $> norminette ft_lstdelone_bonus.c | grep -E '(Error|Warning)'
 $> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_lstdelone.c main.c libft.a -o user_exe
 
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/tests/Bonus_functions/ft_lstdelone/main.c:67:3: error: implicit declaration of function 'ft_lstdelone' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                ft_lstdelone(elem3, &ft_del);
-                ^
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/tests/Bonus_functions/ft_lstdelone/main.c:67:3: note: did you mean 'ft_lstnewone'?
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/tests/Bonus_functions/ft_lstdelone/main.c:29:9: note: 'ft_lstnewone' declared here
-t_list  *ft_lstnewone(void *content)
-         ^
-1 error generated.
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
 
 = ft_lstclear_bonus.c ==========================================================
 $> norminette ft_lstclear_bonus.c | grep -E '(Error|Warning)'
 $> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_lstclear.c main.c libft.a -o user_exe
 
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/tests/Bonus_functions/ft_lstclear/main.c:70:3: error: implicit declaration of function 'ft_lstclear' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                ft_lstclear(&elem3, &ft_del);
-                ^
-1 error generated.
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
 
 = ft_lstadd_front_bonus.c ======================================================
 $> norminette ft_lstadd_front_bonus.c | grep -E '(Error|Warning)'
 $> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_lstadd_front.c main.c libft.a -o user_exe
 
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/tests/Bonus_functions/ft_lstadd_front/main.c:66:3: error: implicit declaration of function 'ft_lstadd_front' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                ft_lstadd_front(&begin, elem4);
-                ^
-1 error generated.
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
 
 = ft_lstadd_back_bonus.c =======================================================
 $> norminette ft_lstadd_back_bonus.c | grep -E '(Error|Warning)'
 $> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_lstadd_back.c main.c libft.a -o user_exe
 
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/tests/Bonus_functions/ft_lstadd_back/main.c:66:3: error: implicit declaration of function 'ft_lstadd_back' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                ft_lstadd_back(&begin, elem);
-                ^
-1 error generated.
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
 
 = ft_lstsize_bonus.c ===========================================================
 $> norminette ft_lstsize_bonus.c | grep -E '(Error|Warning)'
 $> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_lstsize.c main.c libft.a -o user_exe
 
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/tests/Bonus_functions/ft_lstsize/main.c:57:7: error: implicit declaration of function 'ft_lstsize' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                c = ft_lstsize(elem) + 48;
-                    ^
-1 error generated.
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
 
 = ft_lstiter_bonus.c ===========================================================
 $> norminette ft_lstiter_bonus.c | grep -E '(Error|Warning)'
 $> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_lstiter.c main.c libft.a -o user_exe
 
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/tests/Bonus_functions/ft_lstiter/main.c:85:3: error: implicit declaration of function 'ft_lstiter' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                ft_lstiter(elem, &ft_modify_list_with_d);
-                ^
-1 error generated.
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
 
 = ft_lstmap_bonus.c ============================================================
 $> norminette ft_lstmap_bonus.c | grep -E '(Error|Warning)'
 $> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_lstmap.c main.c libft.a -o user_exe
 
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/dirlibft/../libft//ft_lstmap.c:25:10: error: implicit declaration of function 'ft_lstnew' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                node = ft_lstnew(f(lst->content));
-                       ^
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/dirlibft/../libft//ft_lstmap.c:25:10: note: did you mean 'ft_lstmap'?
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/dirlibft/../libft//ft_lstmap.c:15:9: note: 'ft_lstmap' declared here
-t_list  *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
-         ^
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/dirlibft/../libft//ft_lstmap.c:25:8: error: incompatible integer to pointer conversion assigning to 't_list *' (aka 'struct s_list *') from 'int' [-Werror,-Wint-conversion]
-                node = ft_lstnew(f(lst->content));
-                     ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/dirlibft/../libft//ft_lstmap.c:28:4: error: implicit declaration of function 'ft_lstclear' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                        ft_lstclear(&root, del);
-                        ^
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/dirlibft/../libft//ft_lstmap.c:31:3: error: implicit declaration of function 'ft_lstadd_back' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                ft_lstadd_back(&root, node);
-                ^
-4 errors generated.
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/tests/Bonus_functions/ft_lstmap/main.c:89:16: error: implicit declaration of function 'ft_lstmap' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                if (!(list = ft_lstmap(elem, &ft_map, &ft_del)))
-                             ^
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/tests/Bonus_functions/ft_lstmap/main.c:89:14: error: incompatible integer to pointer conversion assigning to 't_list *' (aka 'struct s_list *') from 'int' [-Werror,-Wint-conversion]
-                if (!(list = ft_lstmap(elem, &ft_map, &ft_del)))
-                           ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2 errors generated.
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
 
 = ft_lstlast_bonus.c ===========================================================
 $> norminette ft_lstlast_bonus.c | grep -E '(Error|Warning)'
 $> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_lstlast.c main.c libft.a -o user_exe
 
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/tests/Bonus_functions/ft_lstlast/main.c:59:9: error: implicit declaration of function 'ft_lstlast' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                val = ft_lstlast(elem);
-                      ^
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/tests/Bonus_functions/ft_lstlast/main.c:59:7: error: incompatible integer to pointer conversion assigning to 't_list *' (aka 'struct s_list *') from 'int' [-Werror,-Wint-conversion]
-                val = ft_lstlast(elem);
-                    ^ ~~~~~~~~~~~~~~~~
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/tests/Bonus_functions/ft_lstlast/main.c:66:7: error: incompatible integer to pointer conversion assigning to 't_list *' (aka 'struct s_list *') from 'int' [-Werror,-Wint-conversion]
-                val = ft_lstlast(elem);
-                    ^ ~~~~~~~~~~~~~~~~
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/tests/Bonus_functions/ft_lstlast/main.c:73:7: error: incompatible integer to pointer conversion assigning to 't_list *' (aka 'struct s_list *') from 'int' [-Werror,-Wint-conversion]
-                val = ft_lstlast(elem);
-                    ^ ~~~~~~~~~~~~~~~~
-4 errors generated.
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
 
 = Additional_functions =========================================================
 
@@ -1483,7 +1436,8 @@ $> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_lstlast.c main.c libft.
 $> norminette ft_striteri.c | grep -E '(Error|Warning)'
 $> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_striteri.c main.c libft.a -o user_exe
 
-/Users/azouaiga/Desktop/1337libft-2/libft-war-machine/tests/Additional_functions/ft_striteri/main.c:53:3: error: implicit declaration of function 'ft_striteri' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                ft_striteri(str, &iter);
-                ^
-1 error generated.
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
