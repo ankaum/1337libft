@@ -6,13 +6,13 @@
 /*   By: azouaiga <azouaiga@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 05:44:47 by azouaiga          #+#    #+#             */
-/*   Updated: 2021/12/15 05:45:33 by azouaiga         ###   ########.fr       */
+/*   Updated: 2021/12/17 06:58:44 by azouaiga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_lens(char *s1, char *s2)
+static	int	spos(char *s1, char *s2)
 {
 	int	i;
 	int	j;
@@ -37,7 +37,7 @@ int	ft_lens(char *s1, char *s2)
 	return (c);
 }
 
-int	ft_lene(char *s1, char *s2)
+static	int	epos(char *s1, char *s2)
 {
 	int	s;
 	int	j;
@@ -71,8 +71,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	if (!s1 || !set)
 		return (NULL);
-	c1 = ft_lens((char *)s1, (char *)set);
-	c2 = ft_lene((char *)s1, (char *)set);
+	c1 = spos((char *)s1, (char *)set);
+	c2 = epos((char *)s1, (char *)set);
 	s = ft_strlen(s1);
 	if (s == c1)
 		return (ft_strdup(""));
