@@ -6,7 +6,7 @@
 #    By: azouaiga <azouaiga@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/10 09:20:38 by azouaiga          #+#    #+#              #
-#    Updated: 2021/12/24 05:40:50 by azouaiga         ###   ########.fr        #
+#    Updated: 2021/12/24 06:17:11 by azouaiga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,22 +24,22 @@ OBJS_BONUS := $(CSOURCES_BONUS_PART:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@echo "Building Libft"
+	@echo "Building Libft (Part one and two)..."
 	ar -rc $@ $^
 
 %.o: %.c
 	$(CC) $(CFLAGS) $< -o $@
 
 bonus: $(OBJS_BONUS)
-	@echo "Building Libft (Bonus part)"
+	@echo "Building Libft (With the bonus part)..."
 	ar -rc $(NAME) $^
 
 clean:
-	rm -rf $(OBJS_BONUS)
+	@rm -rf $(OBJS_BONUS)
 	@echo ".o Files Deleted Successfully" 
 
 fclean: clean
-	rm -rf libft.a
+	@rm -rf libft.a
 	@echo "libft.a deleted successfully"
 
 re : fclean all
