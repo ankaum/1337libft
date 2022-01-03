@@ -6,7 +6,7 @@
 /*   By: azouaiga <azouaiga@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 06:16:13 by azouaiga          #+#    #+#             */
-/*   Updated: 2021/12/15 06:16:55 by azouaiga         ###   ########.fr       */
+/*   Updated: 2022/01/03 17:33:03 by azouaiga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 void	ft_nbr(long long n, int len, char *r)
 {
-	int	i;
-
-	i = 0;
 	while (n)
 	{
 		r[len--] = 48 + (n % 10);
